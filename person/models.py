@@ -7,8 +7,8 @@ class Person(models.Model):
     content = models.TextField(blank=True)
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
-    is_published = models.BooleanField()
-    cat_fk = models.ForeignKey("Category", models.PROTECT)
+    is_published = models.BooleanField(default=True)
+    cat = models.ForeignKey("Category", models.PROTECT)
 
     def __str__(self):
         return self.name
