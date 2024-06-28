@@ -4,7 +4,7 @@ from django.db import models
 
 class Person(models.Model):
     name = models.CharField(max_length=100)
-    content = models.TextField(blank=True)
+    content = models.TextField(blank=True, null=True) #blank=True - bu joy пустой bo'lib qolmasligi kerak
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True)
