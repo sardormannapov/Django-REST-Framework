@@ -8,9 +8,19 @@ from serializers import PoetSerializers
 from .models import Person
 
 class ListPoet(APIView):
-    def get(self, requests):
-        lst = Person.objects.all().values()
-        return Response({"Поэт": list(lst)})
+    def get(self, request, pk):
+        if not pk:
+            return Response({"post": "Метод GET не создан"})
+
+        try:
+            instance = Person.objects.get(pk=pk)
+
+        except:
+            return Response({"post": "Объект не найден!"})
+        serializers = PoetSerializers(instance)
+        return Response({"post": serializers.data})
+    
+
 
     def post(self, requests):
         serializers = PoetSerializers(data=requests.data)
