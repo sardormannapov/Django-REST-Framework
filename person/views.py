@@ -26,7 +26,7 @@ class CRUDPoet(mixins.CreateModelMixin,
       @action(methods=["get"], detail=False)
       def category(self, request):
           cats = Category.objects.all()
-          return Response({"cats": [x.name for x in cats]})
+          return Response({"cats": [x.cat_name for x in cats]})
 
 
 
